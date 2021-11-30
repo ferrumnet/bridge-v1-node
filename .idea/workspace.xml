@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CargoProjects">
+    <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="23c4b591-96b1-4813-8c0b-e49d834f1b20" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/crypto/crypto_utils.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/crypto/mod.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/signer/key_provider.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/signer/mod.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/signer/service.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/types/mod.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/types/types.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/mod.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/validator.rs" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Rust File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="x6o5nhaf" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="21OssR7xkDtejcUHVn2kX04Ba1y" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="org.rust.cargo.project.model.PROJECT_DISCOVERY" value="true" />
+    <property name="org.rust.disableDetachedFileInspectionC:/Users/naiem/nk/bridge-v1-node/src/crypto/CryptoUtils.rs" value="true" />
+    <property name="org.rust.disableDetachedFileInspectionC:/Users/naiem/nk/bridge-v1-node/src/ioc/Container.rs" value="true" />
+    <property name="org.rust.disableDetachedFileInspectionC:/Users/naiem/nk/bridge-v1-node/src/ioc/container.rs" value="true" />
+    <property name="org.rust.disableDetachedFileInspectionC:/Users/naiem/nk/bridge-v1-node/src/signer/key_provider.rs" value="true" />
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="cargo build" />
+      <command value="cargo update" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Cargo.update">
+    <configuration name="Run bridge-v1-node" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="channel" value="DEFAULT" />
+      <option name="command" value="run --package bridge-v1-node --bin bridge-v1-node" />
+      <option name="allFeatures" value="false" />
+      <option name="emulateTerminal" value="false" />
+      <option name="backtrace" value="SHORT" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <envs />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test test::test_sign_then_verify" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="channel" value="DEFAULT" />
+      <option name="command" value="test --package bridge-v1-node --bin bridge-v1-node test::test_sign_then_verify -- --exact" />
+      <option name="allFeatures" value="false" />
+      <option name="emulateTerminal" value="false" />
+      <option name="backtrace" value="SHORT" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <envs />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test test::zero_x_works" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="channel" value="DEFAULT" />
+      <option name="command" value="test --package bridge-v1-node --bin bridge-v1-node test::zero_x_works -- --exact" />
+      <option name="allFeatures" value="false" />
+      <option name="emulateTerminal" value="false" />
+      <option name="backtrace" value="SHORT" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <envs />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="build" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="channel" value="DEFAULT" />
+      <option name="command" value="build" />
+      <option name="allFeatures" value="false" />
+      <option name="emulateTerminal" value="false" />
+      <option name="backtrace" value="SHORT" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <envs />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="update" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="channel" value="DEFAULT" />
+      <option name="command" value="update" />
+      <option name="allFeatures" value="false" />
+      <option name="emulateTerminal" value="false" />
+      <option name="backtrace" value="SHORT" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <envs />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Cargo.update" />
+        <item itemvalue="Cargo.Test test::zero_x_works" />
+        <item itemvalue="Cargo.Test test::test_sign_then_verify" />
+        <item itemvalue="Cargo.build" />
+        <item itemvalue="Cargo.build" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="RustProjectSettings">
+    <option name="toolchainHomeDirectory" value="$USER_HOME$/.cargo/bin" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="23c4b591-96b1-4813-8c0b-e49d834f1b20" name="Default Changelist" comment="" />
+      <created>1637823674059</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1637823674059</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="408" y="77" key="#com.intellij.ide.util.MemberChooser" timestamp="1638240193110">
+      <screen x="0" y="0" width="1205" height="720" />
+    </state>
+    <state x="408" y="77" key="#com.intellij.ide.util.MemberChooser/0.0.1205.720@0.0.1205.720" timestamp="1638240193110" />
+    <state x="-1180" y="295" key="FileChooserDialogImpl" timestamp="1638084540290">
+      <screen x="-1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="-1180" y="295" key="FileChooserDialogImpl/0.0.1205.720/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1638084540290" />
+    <state width="1163" height="288" key="GridCell.Tab.0.bottom" timestamp="1638266938646">
+      <screen x="0" y="0" width="1205" height="720" />
+    </state>
+    <state width="1879" height="271" key="GridCell.Tab.0.bottom/0.0.1205.720/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1638224104284" />
+    <state width="1163" height="288" key="GridCell.Tab.0.bottom/0.0.1205.720@0.0.1205.720" timestamp="1638266938646" />
+    <state width="1163" height="288" key="GridCell.Tab.0.center" timestamp="1638266938646">
+      <screen x="0" y="0" width="1205" height="720" />
+    </state>
+    <state width="1879" height="271" key="GridCell.Tab.0.center/0.0.1205.720/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1638224104284" />
+    <state width="1163" height="288" key="GridCell.Tab.0.center/0.0.1205.720@0.0.1205.720" timestamp="1638266938646" />
+    <state width="1163" height="288" key="GridCell.Tab.0.left" timestamp="1638266938646">
+      <screen x="0" y="0" width="1205" height="720" />
+    </state>
+    <state width="1879" height="271" key="GridCell.Tab.0.left/0.0.1205.720/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1638224104284" />
+    <state width="1163" height="288" key="GridCell.Tab.0.left/0.0.1205.720@0.0.1205.720" timestamp="1638266938646" />
+    <state width="1163" height="288" key="GridCell.Tab.0.right" timestamp="1638266938646">
+      <screen x="0" y="0" width="1205" height="720" />
+    </state>
+    <state width="1879" height="271" key="GridCell.Tab.0.right/0.0.1205.720/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1638224104284" />
+    <state width="1163" height="288" key="GridCell.Tab.0.right/0.0.1205.720@0.0.1205.720" timestamp="1638266938646" />
+    <state x="266" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1638266833697">
+      <screen x="0" y="0" width="1205" height="720" />
+    </state>
+    <state x="-1496" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1205.720/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1638228917590" />
+    <state x="266" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1205.720@0.0.1205.720" timestamp="1638266833697" />
+    <state x="387" y="167" width="672" height="452" key="run.anything.popup" timestamp="1638257339623">
+      <screen x="0" y="0" width="1205" height="720" />
+    </state>
+    <state x="-1304" y="250" width="672" height="677" key="run.anything.popup/0.0.1205.720/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1638084548175" />
+    <state x="387" y="167" width="672" height="452" key="run.anything.popup/0.0.1205.720@0.0.1205.720" timestamp="1638257339623" />
+    <state x="391" y="157" width="672" height="452" key="search.everywhere.popup" timestamp="1638261339914">
+      <screen x="0" y="0" width="1205" height="720" />
+    </state>
+    <state x="-1297" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1205.720/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1638229304962" />
+    <state x="391" y="157" width="672" height="452" key="search.everywhere.popup/0.0.1205.720@0.0.1205.720" timestamp="1638261339914" />
+  </component>
+</project>
