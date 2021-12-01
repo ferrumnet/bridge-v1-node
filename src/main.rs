@@ -3,42 +3,69 @@ mod signer;
 mod types;
 mod validator;
 mod database;
-use signer::service::{SignerServiceImpl, SignerService};
+mod cli;
+use signer::service::{SignerServiceImpl};
 use crate::crypto::crypto_utils::CryptoUtils;
-use crate::validator::validator::MultiSigValidator;
+use crate::validator::validator::{MultiSigValidator};
 use crate::signer::key_provider::EnvKeyProvider;
-use crate::types::types::SignerConfig;
+use crate::types::types::{AppConfig};
+use crate::validator::swap_processor::{Processor, SwapProcessor};
+use crate::types::errors::{BResult, BError};
+use cli::cli::cli;
+use std::fs;
+use crate::database::mongo::DatabaseClient;
 
 // MultiSigSigner. This signer just aggregates signatures for a number of other
 // signers. Once enough signatures for a message is provided, we just sign it
 // without knowing what the msg represents at all.
 
-fn setup() -> MultiSigValidator<EnvKeyProvider> {
+async fn setup(c: &AppConfig) -> BResult<Box<dyn Processor>> {
     let cr_f = || CryptoUtils::new();
     let signer: SignerServiceImpl = SignerServiceImpl::new(Box::new(cr_f()));
     let kp = EnvKeyProvider::new();
-    let conf = SignerConfig {
-        address: String::from("YO"),
-        min_threshold: 1,
-        validators: Vec::new(),
-    };
     let validator = MultiSigValidator::new(
-        conf, signer, kp
-    );
-    validator
+        &c.signer, signer, kp);
+    let db = DatabaseClient::new(&c.db)
+        .await
+        .map_err(|_| BError::new("Error initializing db client"))?;
+    let processor = SwapProcessor::new(
+        validator,  db);
+    Ok(Box::new(processor))
 }
 
-fn main() {
-    let valid = setup();
-    valid.is_multi_sig_valid(&String::new(), &Vec::new());
-    // println!("Hello, world! {}", signer.sign(
-    //     &String::from("BOO"), &String::from("SOO")));
+#[tokio::main]
+async fn main() {
+    let opt = cli();
+    let confs = match fs::read_to_string(&opt.config) {
+        Ok(c) => AppConfig::from_str(&c),
+        Err(e) => {
+            println!("Error reading config file {}: {}",
+                     &opt.config.as_path().to_str().unwrap_or(""), e);
+            return
+        }
+    };
+    let psr = setup(&confs).await;
+    let ps = match psr {
+        Ok(p) => p,
+        Err(e) => {
+            println!("Error setting up the environment: {}", &e.msg);
+            return
+        }
+    };
+    match ps.process_for_network(&opt.network).await {
+        Ok(r) => r,
+        Err(e) => {
+            println!("Error processing for the network: {} - {}", &opt.network, e.msg);
+            return
+        }
+    }
 }
 
 mod test {
-    use crate::setup;
-    use crate::signer::service::{SignerService, SignerServiceImpl};
-    use crate::crypto::crypto_utils::{private_to_address, h2b, b2h, CryptoUtils};
+    #[allow(unused_imports)]
+    use crate::crypto::crypto_utils::{h2b, b2h, private_to_address, CryptoUtils};
+    #[allow(unused_imports)]
+    use crate::signer::service::{SignerServiceImpl, SignerService};
 
     #[test]
     fn zero_x_works() {
@@ -61,7 +88,7 @@ mod test {
         println!("Using address: {}", &address);
 
         let cr_f = || CryptoUtils::new();
-        let signer: SignerServiceImpl = SignerServiceImpl::new(Box::new(cr_f()));
+        let signer = SignerServiceImpl::new(Box::new(cr_f()));
         let signed = signer.sign(&msg, &sk);
 
         println!("Signed message: {}", &signed);

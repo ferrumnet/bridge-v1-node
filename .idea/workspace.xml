@@ -5,15 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="23c4b591-96b1-4813-8c0b-e49d834f1b20" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/crypto/crypto_utils.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/crypto/mod.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/signer/key_provider.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/signer/mod.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/signer/service.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/types/mod.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/types/types.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/validator/mod.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/validator/validator.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/crypto/crypto_utils.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/crypto/crypto_utils.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/mongo.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/mongo.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/signer/key_provider.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/signer/key_provider.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/mod.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/types.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/types.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validator/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/mod.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validator/validator.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/validator.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +65,7 @@
       <command value="cargo update" />
     </option>
   </component>
-  <component name="RunManager" selected="Cargo.update">
+  <component name="RunManager" selected="Cargo.Run bridge-v1-node">
     <configuration name="Run bridge-v1-node" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="channel" value="DEFAULT" />
       <option name="command" value="run --package bridge-v1-node --bin bridge-v1-node" />
@@ -126,11 +128,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Cargo.Run bridge-v1-node" />
+        <item itemvalue="Cargo.update" />
+        <item itemvalue="Cargo.update" />
         <item itemvalue="Cargo.update" />
         <item itemvalue="Cargo.Test test::zero_x_works" />
-        <item itemvalue="Cargo.Test test::test_sign_then_verify" />
-        <item itemvalue="Cargo.build" />
-        <item itemvalue="Cargo.build" />
       </list>
     </recent_temporary>
   </component>
@@ -159,40 +161,44 @@
       <screen x="-1920" y="0" width="1920" height="1080" />
     </state>
     <state x="-1180" y="295" key="FileChooserDialogImpl/0.0.1205.720/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1638084540290" />
-    <state width="1163" height="288" key="GridCell.Tab.0.bottom" timestamp="1638266938646">
+    <state width="1163" height="255" key="GridCell.Tab.0.bottom" timestamp="1638348794294">
       <screen x="0" y="0" width="1205" height="720" />
     </state>
-    <state width="1879" height="271" key="GridCell.Tab.0.bottom/0.0.1205.720/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1638224104284" />
-    <state width="1163" height="288" key="GridCell.Tab.0.bottom/0.0.1205.720@0.0.1205.720" timestamp="1638266938646" />
-    <state width="1163" height="288" key="GridCell.Tab.0.center" timestamp="1638266938646">
+    <state width="1879" height="255" key="GridCell.Tab.0.bottom/0.0.1205.720/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1638338094605" />
+    <state width="1163" height="255" key="GridCell.Tab.0.bottom/0.0.1205.720@0.0.1205.720" timestamp="1638348794294" />
+    <state width="1163" height="255" key="GridCell.Tab.0.center" timestamp="1638348794294">
       <screen x="0" y="0" width="1205" height="720" />
     </state>
-    <state width="1879" height="271" key="GridCell.Tab.0.center/0.0.1205.720/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1638224104284" />
-    <state width="1163" height="288" key="GridCell.Tab.0.center/0.0.1205.720@0.0.1205.720" timestamp="1638266938646" />
-    <state width="1163" height="288" key="GridCell.Tab.0.left" timestamp="1638266938646">
+    <state width="1879" height="255" key="GridCell.Tab.0.center/0.0.1205.720/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1638338094603" />
+    <state width="1163" height="255" key="GridCell.Tab.0.center/0.0.1205.720@0.0.1205.720" timestamp="1638348794294" />
+    <state width="1163" height="255" key="GridCell.Tab.0.left" timestamp="1638348794294">
       <screen x="0" y="0" width="1205" height="720" />
     </state>
-    <state width="1879" height="271" key="GridCell.Tab.0.left/0.0.1205.720/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1638224104284" />
-    <state width="1163" height="288" key="GridCell.Tab.0.left/0.0.1205.720@0.0.1205.720" timestamp="1638266938646" />
-    <state width="1163" height="288" key="GridCell.Tab.0.right" timestamp="1638266938646">
+    <state width="1879" height="255" key="GridCell.Tab.0.left/0.0.1205.720/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1638338094603" />
+    <state width="1163" height="255" key="GridCell.Tab.0.left/0.0.1205.720@0.0.1205.720" timestamp="1638348794294" />
+    <state width="1163" height="255" key="GridCell.Tab.0.right" timestamp="1638348794294">
       <screen x="0" y="0" width="1205" height="720" />
     </state>
-    <state width="1879" height="271" key="GridCell.Tab.0.right/0.0.1205.720/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1638224104284" />
-    <state width="1163" height="288" key="GridCell.Tab.0.right/0.0.1205.720@0.0.1205.720" timestamp="1638266938646" />
-    <state x="266" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1638266833697">
+    <state width="1879" height="255" key="GridCell.Tab.0.right/0.0.1205.720/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1638338094603" />
+    <state width="1163" height="255" key="GridCell.Tab.0.right/0.0.1205.720@0.0.1205.720" timestamp="1638348794294" />
+    <state x="266" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1638348779812">
       <screen x="0" y="0" width="1205" height="720" />
     </state>
-    <state x="-1496" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1205.720/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1638228917590" />
-    <state x="266" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1205.720@0.0.1205.720" timestamp="1638266833697" />
-    <state x="387" y="167" width="672" height="452" key="run.anything.popup" timestamp="1638257339623">
+    <state x="-1496" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1205.720/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1638323874027" />
+    <state x="266" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1205.720@0.0.1205.720" timestamp="1638348779812" />
+    <state x="302" y="100" width="601" height="520" key="find.popup" timestamp="1638346725509">
       <screen x="0" y="0" width="1205" height="720" />
     </state>
-    <state x="-1304" y="250" width="672" height="677" key="run.anything.popup/0.0.1205.720/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1638084548175" />
-    <state x="387" y="167" width="672" height="452" key="run.anything.popup/0.0.1205.720@0.0.1205.720" timestamp="1638257339623" />
-    <state x="391" y="157" width="672" height="452" key="search.everywhere.popup" timestamp="1638261339914">
+    <state x="302" y="100" width="601" height="520" key="find.popup/0.0.1205.720@0.0.1205.720" timestamp="1638346725509" />
+    <state x="387" y="167" width="672" height="452" key="run.anything.popup" timestamp="1638344362924">
       <screen x="0" y="0" width="1205" height="720" />
     </state>
-    <state x="-1297" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1205.720/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1638229304962" />
-    <state x="391" y="157" width="672" height="452" key="search.everywhere.popup/0.0.1205.720@0.0.1205.720" timestamp="1638261339914" />
+    <state x="-1304" y="250" width="672" height="677" key="run.anything.popup/0.0.1205.720/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1638323692717" />
+    <state x="387" y="167" width="672" height="452" key="run.anything.popup/0.0.1205.720@0.0.1205.720" timestamp="1638344362924" />
+    <state x="391" y="157" width="672" height="452" key="search.everywhere.popup" timestamp="1638346554255">
+      <screen x="0" y="0" width="1205" height="720" />
+    </state>
+    <state x="-1297" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1205.720/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1638318992408" />
+    <state x="391" y="157" width="672" height="452" key="search.everywhere.popup/0.0.1205.720@0.0.1205.720" timestamp="1638346554255" />
   </component>
 </project>

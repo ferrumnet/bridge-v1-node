@@ -1,4 +1,6 @@
 use std::fmt;
+use serde::Deserialize;
+use serde_json;
 use serde::__private::Formatter;
 
 pub struct WithdrawItemSignature {
@@ -18,7 +20,7 @@ pub struct PayBySig {
 }
 
 pub struct WithdrawItem {
-    pub v: String,
+    pub v: i32,
     pub version: String,
     pub receive_network: String,
     pub receive_transaction_id: String,
@@ -44,13 +46,31 @@ impl fmt::Display for SignedSwap {
     }
 }
 
+#[derive(Clone, Debug, Deserialize)]
+#[serde(rename_all = "PascalCase")]
 pub struct SignerConfig {
     pub address: String,
     pub validators: Vec<String>,
     pub min_threshold: u32,
 }
 
+#[derive(Debug, Deserialize)]
+#[serde(rename_all = "PascalCase")]
 pub struct DbConfig {
     pub connection_string: String,
     pub database: String,
+}
+
+#[derive(Debug, Deserialize)]
+#[serde(rename_all = "PascalCase")]
+pub struct AppConfig {
+    pub signer: SignerConfig,
+    pub db: DbConfig,
+}
+
+impl AppConfig {
+    pub fn from_str(s: &String) -> Self {
+        let c: AppConfig = serde_json::from_str(s).expect(&format!("Error parsing: '{}'", &s));
+        c
+    }
 }

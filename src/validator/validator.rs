@@ -2,13 +2,20 @@ use crate::types::types::{SignedSwap, SignerConfig};
 use crate::signer::service::{SignerServiceImpl, SignerService};
 use crate::signer::key_provider::KeyProvider;
 use std::collections::HashMap;
-use std::time::SystemTime;
+use crate::types::utils::now;
 
-pub fn now() -> i64 {
-    let millis = SystemTime::now()
-        .duration_since(SystemTime::UNIX_EPOCH)
-        .unwrap().as_millis();
-    millis as i64
+pub trait Validator {
+    fn is_multi_sig_valid(
+        &self,
+        msg: &String,
+        all_signatures: &Vec<SignedSwap>,
+    ) -> bool;
+    fn verify_sig(&self, msg: &String, s: &SignedSwap) -> bool;
+    fn produce_our_signature(
+        &self,
+        msg: &String,
+        signatures: &Vec<SignedSwap>,
+    ) -> Result<SignedSwap, ValidatorError>;
 }
 
 pub struct ValidatorError {
@@ -23,21 +30,23 @@ pub struct MultiSigValidator<KP: KeyProvider> {
 
 impl<KP: KeyProvider> MultiSigValidator<KP> {
     pub fn new(
-        config: SignerConfig,
+        config: &SignerConfig,
         signing_svc: SignerServiceImpl,
         kp: KP,
     ) -> Self {
         MultiSigValidator {
-            config,
+            config: config.clone(),
             signing_svc,
             key_provider: Box::new(kp),
         }
     }
+}
 
+impl<KP: KeyProvider> Validator for MultiSigValidator<KP> {
     /**
     Go through all the sig, make sure they are unique, and share the msg.
     **/
-    pub fn is_multi_sig_valid(
+    fn is_multi_sig_valid(
         &self,
         msg: &String,
         all_signatures: &Vec<SignedSwap>,
@@ -99,7 +108,7 @@ impl<KP: KeyProvider> MultiSigValidator<KP> {
         true
     }
 
-    pub fn produce_our_signature(
+    fn produce_our_signature(
         &self,
         msg: &String,
         signatures: &Vec<SignedSwap>,

@@ -1,3 +1,6 @@
+use std::env;
+
+const PRIVATE_KEY_CLEAR_TEXT: &str = "PRIVATE_KEY_CLEAR_TEXT";
 
 pub trait KeyProvider {
     fn get_sk(&self) -> String;
@@ -10,13 +13,13 @@ pub struct EnvKeyProvider {
 impl EnvKeyProvider {
     pub fn new() -> Self {
         EnvKeyProvider {
-            sk: String::from("HTTP"),
+            sk: env::var(PRIVATE_KEY_CLEAR_TEXT).expect("PRIVATE_KEY_CLEAR_TEXT required"),
         }
     }
 }
 
 impl KeyProvider for EnvKeyProvider {
     fn get_sk(&self) -> String {
-        String::from("YO")
+        self.sk.clone()
     }
 }

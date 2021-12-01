@@ -52,6 +52,7 @@ impl EcdsaSig {
         Vec::from(rv)
     }
 
+    #[allow(dead_code)]
     pub fn to_hex(&self) -> String {
         b2h(&self.to_u8())
     }
@@ -86,6 +87,7 @@ pub fn public_to_address(public: &[u8]) -> Vec<u8> {
     Vec::from(&hash[12..])
 }
 
+#[allow(dead_code)]
 pub fn private_to_address(sk: &[u8]) -> Vec<u8> {
     let s = Secp256k1::new();
     let key = SecretKey::from_slice(sk).unwrap();
