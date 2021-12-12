@@ -1,10 +1,7 @@
-use secp256k1::{key::SecretKey, Message, Secp256k1, PublicKey};
-use tiny_keccak::{
-    Keccak,
-    Hasher,
-};
 use secp256k1::recovery::{RecoverableSignature, RecoveryId};
+use secp256k1::{key::SecretKey, Message, PublicKey, Secp256k1};
 use std::fmt;
+use tiny_keccak::{Hasher, Keccak};
 
 pub struct EcdsaSig {
     v: u64,
@@ -35,7 +32,7 @@ impl EcdsaSig {
         Ok(EcdsaSig {
             r: Vec::from(&s[..32]),
             s: Vec::from(&s[32..64]),
-            v: s[64] as u64
+            v: s[64] as u64,
         })
     }
 
@@ -117,27 +114,30 @@ fn ecdsa_recover(hash: &[u8], sig: &EcdsaSig) -> Result<Vec<u8>, secp256k1::Erro
     sig_compact.extend(&sig.s);
     println!("SIG ISO {}", b2h(&sig_compact));
     let sig_v = RecoveryId::from_i32(sig.v.clone() as i32).unwrap();
-    let rec_sig = RecoverableSignature::from_compact(
-        &sig_compact, sig_v);
+    let rec_sig = RecoverableSignature::from_compact(&sig_compact, sig_v);
     match rec_sig {
         Ok(r) => {
-            println!("REC SIG {} - {}", b2h(&r.serialize_compact().1), &r.serialize_compact().0.to_i32());
+            println!(
+                "REC SIG {} - {}",
+                b2h(&r.serialize_compact().1),
+                &r.serialize_compact().0.to_i32()
+            );
             match s.recover(&msg, &r) {
                 Ok(pub_key) => {
                     let pk_bytes_raw: [u8; 65] = pub_key.serialize_uncompressed();
                     println!("REC: PUB KEY IS {}", &b2h(&pk_bytes_raw));
                     Ok(public_to_address(&pk_bytes_raw[1..]))
-                },
+                }
                 Err(e) => return Err(e),
             }
-        },
+        }
         Err(e) => return Err(e),
     }
 }
 
 impl CryptoUtils {
     pub fn new() -> Self {
-        return CryptoUtils{ };
+        return CryptoUtils {};
     }
 
     pub fn sign(&self, hash: &[u8], private_key: &[u8]) -> Vec<u8> {

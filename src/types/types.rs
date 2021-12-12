@@ -1,7 +1,7 @@
-use std::fmt;
 use serde::Deserialize;
-use serde_json;
 use serde::__private::Formatter;
+use serde_json;
+use std::fmt;
 
 pub struct WithdrawItemSignature {
     pub creation_time: i64,
@@ -16,7 +16,7 @@ pub struct PayBySig {
     pub contract_version: String,
     pub contract_address: String,
     pub hash: String,
-    pub signatures: Vec<WithdrawItemSignature>
+    pub signatures: Vec<WithdrawItemSignature>,
 }
 
 pub struct WithdrawItem {
@@ -40,9 +40,16 @@ pub struct SignedSwap {
 
 impl fmt::Display for SignedSwap {
     fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
-        write!(f, "{} - {}:{} msg_hash:{}, signer: {}, signature: {}",
-               &self.creation_time, &self.network, &self.transaction_id,
-            &self.msg_hash, &self.signer, &self.signature)
+        write!(
+            f,
+            "{} - {}:{} msg_hash:{}, signer: {}, signature: {}",
+            &self.creation_time,
+            &self.network,
+            &self.transaction_id,
+            &self.msg_hash,
+            &self.signer,
+            &self.signature
+        )
     }
 }
 

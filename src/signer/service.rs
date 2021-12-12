@@ -1,4 +1,4 @@
-use crate::crypto::crypto_utils::{CryptoUtils, h2b, b2h};
+use crate::crypto::crypto_utils::{b2h, h2b, CryptoUtils};
 
 pub trait SignerService {
     fn sign(&self, msg: &String, sk: &String) -> String;

@@ -1,4 +1,3 @@
-
 pub struct BError {
     pub msg: String,
 }
@@ -10,6 +9,5 @@ impl BError {
         }
     }
 }
-
 
 pub type BResult<T> = Result<T, BError>;
