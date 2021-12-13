@@ -46,7 +46,7 @@ impl<KP: KeyProvider> Validator for MultiSigValidator<KP> {
         if signatures.len() == 0 {
             return false;
         }
-        if signatures.len() <= self.config.min_threshold as usize {
+        if signatures.len() < self.config.min_threshold as usize {
             let sig = &signatures[0];
             println!(
                 "ignoring {}:{} - not enough signatures ({} of {})",
@@ -95,7 +95,8 @@ impl<KP: KeyProvider> Validator for MultiSigValidator<KP> {
         let recovered: String = self.signing_svc.recover(msg, &s.signature);
         if recovered.ne(&s.signer) {
             println!(
-                "Error verify signature. Provided signature doesn't match the record {}",
+                "Error verify signature. Provided signature doesn't match the record {} - {}",
+                &recovered,
                 s
             );
             return false;

@@ -3,10 +3,17 @@ use serde::__private::Formatter;
 use serde_json;
 use std::fmt;
 
+#[derive(Clone, Debug)]
 pub struct WithdrawItemSignature {
     pub creation_time: i64,
     pub creator: String,
     pub signature: String,
+}
+impl fmt::Display for WithdrawItemSignature {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "creation_time: {}, creator: {}, signature: {}",
+               self.creation_time, self.creator, self.signature)
+    }
 }
 
 pub struct PayBySig {
@@ -54,7 +61,7 @@ impl fmt::Display for SignedSwap {
 }
 
 #[derive(Clone, Debug, Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[serde(rename_all = "camelCase")]
 pub struct SignerConfig {
     pub address: String,
     pub validators: Vec<String>,
@@ -62,14 +69,14 @@ pub struct SignerConfig {
 }
 
 #[derive(Debug, Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[serde(rename_all = "camelCase")]
 pub struct DbConfig {
     pub connection_string: String,
     pub database: String,
 }
 
 #[derive(Debug, Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[serde(rename_all = "camelCase")]
 pub struct AppConfig {
     pub signer: SignerConfig,
     pub db: DbConfig,

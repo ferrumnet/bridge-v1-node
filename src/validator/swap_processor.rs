@@ -32,6 +32,7 @@ impl<V: Validator, D: Database> Processor for SwapProcessor<V, D> {
             .pending_withdraw_items(network)
             .await
             .map_err(|_| BError::new("Error getting withdraw items"))?;
+        println!("Loaded {} withdraw items for network {}", &withdraw_items.len(), network);
         for wi in &withdraw_items {
             self.process_withdraw_item(wi).await?
         }
@@ -39,11 +40,13 @@ impl<V: Validator, D: Database> Processor for SwapProcessor<V, D> {
     }
 
     async fn process_withdraw_item(&self, wi: &WithdrawItem) -> BResult<()> {
+        println!("Processing wi: {}:{}", &wi.receive_network, &wi.receive_transaction_id);
         let sigs = self
             .db
             .signed_swaps(&wi.receive_network, &wi.receive_transaction_id)
             .await
             .map_err(|_| BError::new("Cannot get signed swaps"))?;
+        println!("We have {} signatures", sigs.len());
         if self
             .validator
             .is_multi_sig_valid(&wi.pay_by_sig.hash, &sigs)
@@ -57,6 +60,7 @@ impl<V: Validator, D: Database> Processor for SwapProcessor<V, D> {
                 creation_time: final_sig.creation_time,
                 creator: final_sig.signer,
             };
+            println!("Produced sig {}", &wis);
             self.db
                 .add_signature_to_withdraw_item(
                     &wi.receive_network,

@@ -7,7 +7,7 @@ use mongodb::error::Result;
 use mongodb::{Collection, Cursor};
 use tokio_stream::StreamExt;
 
-pub const MONGO_SCHEMA_VERSION: &str = "2.0";
+pub const MONGO_SCHEMA_VERSION: &str = "1.0";
 
 #[async_trait]
 pub trait Database {
@@ -40,16 +40,17 @@ impl DatabaseClient {
         // (&client_uri, ResolverConfig::())
         //         .await?;
         let client = mongodb::Client::with_uri_str(&conf.connection_string).await?;
+        println!("Connected using {}", &conf.connection_string);
 
         let withdraw_items = Box::new(
             client
                 .database(&conf.database)
-                .collection("userBridgeWithdrawableBalanceItem"),
+                .collection("userbridgewithdrawablebalanceitems"),
         );
         let validator_signatures = Box::new(
             client
                 .database(&conf.database)
-                .collection("validatorSignatures"),
+                .collection("withdrawitemhashverifications"),
         );
         Ok(DatabaseClient {
             withdraw_items,
@@ -60,6 +61,7 @@ impl DatabaseClient {
     fn doc_to_withdraw_item(&self, d: &Document) -> ValueAccessResult<WithdrawItem> {
         let dpbs = d.get_document("payBySig")?;
         let sigs = dpbs.get_array("signatures");
+        // println!("SIGS {}", &sigs.map_or_else(|e| 0 as usize, |s| s.len()));
         let signatures: Vec<WithdrawItemSignature> = sigs
             .unwrap()
             .into_iter()
@@ -72,15 +74,21 @@ impl DatabaseClient {
                 }
             })
             .collect();
+        let swap_tx_id = String::from(dpbs.get_str("swapTxId")?);
+        let hash = String::from(dpbs.get_str("hash")?);
+        let contract_name = String::from(dpbs.get_str("contractName")?);
+        let contract_version = String::from(dpbs.get_str("contractVersion")?);
+        let contract_address = String::from(dpbs.get_str("contractAddress")?);
+        let source_chain_id = dpbs.get_i32("sourceChainId")?;
 
         let pay_by_sig = PayBySig {
-            swap_tx_id: String::from(d.get_str("swapTxId")?),
-            hash: String::from(d.get_str("hash")?),
-            contract_name: String::from(d.get_str("contractName")?),
-            contract_version: String::from(d.get_str("contractVersion")?),
-            contract_address: String::from(d.get_str("contractAddress")?),
+            swap_tx_id,
+            hash,
+            contract_name,
+            contract_version,
+            contract_address,
             signatures,
-            source_chain_id: d.get_i32("sourceChainId")?,
+            source_chain_id,
         };
         Ok(WithdrawItem {
             v: d.get_i32("v")?,
@@ -94,9 +102,11 @@ impl DatabaseClient {
     }
 
     fn doc_to_signed_swap(&self, d: &Document) -> ValueAccessResult<SignedSwap> {
+        let creation_time = d.get_f64("signatureCreationTime")?;
+        let signature = String::from(d.get_str("signature")?);
         Ok(SignedSwap {
-            creation_time: d.get_i64("creationTime")?,
-            signature: String::from(d.get_str("signature")?),
+            creation_time: creation_time as i64,
+            signature,
             signer: String::from(d.get_str("signer")?),
             transaction_id: String::from(d.get_str("transactionId")?),
             network: String::from(d.get_str("network")?),
@@ -116,16 +126,16 @@ impl Database for DatabaseClient {
     ) -> Result<Document> {
         let new_sig = doc! {
             "creationTime": wis.creation_time,
-            "creator": &wis.creator,
-            "signature": &wis.signature,
+            "creator": wis.creator.clone(),
+            "signature": wis.signature.clone(),
         };
         let res: Option<Document> = self
             .withdraw_items
             .find_one_and_update(
                 doc! {
                     "$and": [
-                        { "network": network, },
-                        { "transactionId": transaction_id },
+                        { "receiveNetwork": network.clone(), },
+                        { "receiveTransactionId": transaction_id.clone() },
                         { "v": _v },
                     ]
                 },
@@ -176,7 +186,7 @@ impl Database for DatabaseClient {
                 doc! {
                     "$and": [
                         { "version": MONGO_SCHEMA_VERSION, },
-                        { "network": network, },
+                        { "receiveNetwork": network, },
                         { "signatures": 0 },
                     ]
                 },
@@ -186,6 +196,7 @@ impl Database for DatabaseClient {
 
         let mut result: Vec<WithdrawItem> = Vec::new();
         while let Some(doc) = cursor.next().await {
+            println!("Pushing a WI");
             result.push(self.doc_to_withdraw_item(&doc?).unwrap());
         }
         Ok(result)

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="CargoProjects">
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
@@ -10,11 +13,9 @@
       <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/crypto/crypto_utils.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/crypto/crypto_utils.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/database/mongo.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/mongo.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/signer/key_provider.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/signer/key_provider.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/mod.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/signer/service.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/signer/service.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/types/types.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/types.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validator/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/mod.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validator/swap_processor.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/swap_processor.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/validator/validator.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/validator.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,11 +36,22 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="x6o5nhaf" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectCodeStyleSettingsMigration">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="ProjectId" id="21OssR7xkDtejcUHVn2kX04Ba1y" />
   <component name="ProjectLevelVcsManager">
@@ -158,7 +170,9 @@
   </component>
   <component name="RustProjectSettings">
     <option name="toolchainHomeDirectory" value="$USER_HOME$/.cargo/bin" />
+    <option name="version" value="2" />
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -171,54 +185,5 @@
       <updated>1637823674059</updated>
     </task>
     <servers />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="408" y="77" key="#com.intellij.ide.util.MemberChooser" timestamp="1638240193110">
-      <screen x="0" y="0" width="1205" height="720" />
-    </state>
-    <state x="408" y="77" key="#com.intellij.ide.util.MemberChooser/0.0.1205.720@0.0.1205.720" timestamp="1638240193110" />
-    <state x="-1180" y="295" key="FileChooserDialogImpl" timestamp="1638084540290">
-      <screen x="-1920" y="0" width="1920" height="1080" />
-    </state>
-    <state x="-1180" y="295" key="FileChooserDialogImpl/0.0.1205.720/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1638084540290" />
-    <state width="1163" height="255" key="GridCell.Tab.0.bottom" timestamp="1638348794294">
-      <screen x="0" y="0" width="1205" height="720" />
-    </state>
-    <state width="1879" height="255" key="GridCell.Tab.0.bottom/0.0.1205.720/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1638338094605" />
-    <state width="1163" height="255" key="GridCell.Tab.0.bottom/0.0.1205.720@0.0.1205.720" timestamp="1638348794294" />
-    <state width="1163" height="255" key="GridCell.Tab.0.center" timestamp="1638348794294">
-      <screen x="0" y="0" width="1205" height="720" />
-    </state>
-    <state width="1879" height="255" key="GridCell.Tab.0.center/0.0.1205.720/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1638338094603" />
-    <state width="1163" height="255" key="GridCell.Tab.0.center/0.0.1205.720@0.0.1205.720" timestamp="1638348794294" />
-    <state width="1163" height="255" key="GridCell.Tab.0.left" timestamp="1638348794294">
-      <screen x="0" y="0" width="1205" height="720" />
-    </state>
-    <state width="1879" height="255" key="GridCell.Tab.0.left/0.0.1205.720/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1638338094603" />
-    <state width="1163" height="255" key="GridCell.Tab.0.left/0.0.1205.720@0.0.1205.720" timestamp="1638348794294" />
-    <state width="1163" height="255" key="GridCell.Tab.0.right" timestamp="1638348794294">
-      <screen x="0" y="0" width="1205" height="720" />
-    </state>
-    <state width="1879" height="255" key="GridCell.Tab.0.right/0.0.1205.720/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1638338094603" />
-    <state width="1163" height="255" key="GridCell.Tab.0.right/0.0.1205.720@0.0.1205.720" timestamp="1638348794294" />
-    <state x="266" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1638348779812">
-      <screen x="0" y="0" width="1205" height="720" />
-    </state>
-    <state x="-1496" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1205.720/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1638323874027" />
-    <state x="266" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1205.720@0.0.1205.720" timestamp="1638348779812" />
-    <state x="302" y="100" width="601" height="520" key="find.popup" timestamp="1638346725509">
-      <screen x="0" y="0" width="1205" height="720" />
-    </state>
-    <state x="302" y="100" width="601" height="520" key="find.popup/0.0.1205.720@0.0.1205.720" timestamp="1638346725509" />
-    <state x="387" y="167" width="672" height="452" key="run.anything.popup" timestamp="1638344362924">
-      <screen x="0" y="0" width="1205" height="720" />
-    </state>
-    <state x="-1304" y="250" width="672" height="677" key="run.anything.popup/0.0.1205.720/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1638323692717" />
-    <state x="387" y="167" width="672" height="452" key="run.anything.popup/0.0.1205.720@0.0.1205.720" timestamp="1638344362924" />
-    <state x="391" y="157" width="672" height="452" key="search.everywhere.popup" timestamp="1638346554255">
-      <screen x="0" y="0" width="1205" height="720" />
-    </state>
-    <state x="-1297" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1205.720/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1638318992408" />
-    <state x="391" y="157" width="672" height="452" key="search.everywhere.popup/0.0.1205.720@0.0.1205.720" timestamp="1638346554255" />
   </component>
 </project>

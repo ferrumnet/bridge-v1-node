@@ -45,7 +45,6 @@ impl EcdsaSig {
         // self.r.clone_into(rv[0..]);
         // self.r.clone_into(rv[32..]);
         rv[64] = self.v as u8;
-        println!("TO_U8:{}", b2h(&rv));
         Vec::from(rv)
     }
 
@@ -97,7 +96,6 @@ fn ecdsa_sign(hash: &[u8], private_key: &[u8]) -> EcdsaSig {
     let msg = Message::from_slice(hash).unwrap();
     let key = SecretKey::from_slice(private_key).unwrap();
     let (v, sig_bytes) = s.sign_recoverable(&msg, &key).serialize_compact();
-    println!("00=REC SIG {} - {}", b2h(&sig_bytes), &v.to_i32());
 
     EcdsaSig {
         v: v.to_i32() as u64, // + chain_id * 2 + 35,
@@ -109,23 +107,15 @@ fn ecdsa_sign(hash: &[u8], private_key: &[u8]) -> EcdsaSig {
 fn ecdsa_recover(hash: &[u8], sig: &EcdsaSig) -> Result<Vec<u8>, secp256k1::Error> {
     let s = Secp256k1::new();
     let msg = Message::from_slice(hash).unwrap();
-    println!("MSG ISO {}", b2h(&hash));
     let mut sig_compact: Vec<u8> = sig.r.clone();
     sig_compact.extend(&sig.s);
-    println!("SIG ISO {}", b2h(&sig_compact));
     let sig_v = RecoveryId::from_i32(sig.v.clone() as i32).unwrap();
     let rec_sig = RecoverableSignature::from_compact(&sig_compact, sig_v);
     match rec_sig {
         Ok(r) => {
-            println!(
-                "REC SIG {} - {}",
-                b2h(&r.serialize_compact().1),
-                &r.serialize_compact().0.to_i32()
-            );
             match s.recover(&msg, &r) {
                 Ok(pub_key) => {
                     let pk_bytes_raw: [u8; 65] = pub_key.serialize_uncompressed();
-                    println!("REC: PUB KEY IS {}", &b2h(&pk_bytes_raw));
                     Ok(public_to_address(&pk_bytes_raw[1..]))
                 }
                 Err(e) => return Err(e),
@@ -142,7 +132,6 @@ impl CryptoUtils {
 
     pub fn sign(&self, hash: &[u8], private_key: &[u8]) -> Vec<u8> {
         let sig = ecdsa_sign(hash, private_key);
-        println!("ORIG SIG {}", &sig);
         sig.to_u8()
     }
 
