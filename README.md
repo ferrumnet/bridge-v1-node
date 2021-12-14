@@ -17,3 +17,7 @@ This node simulate a multi-sig using the following signature.
 ```
 $ cargo build --release
 ```
+
+**Example execution**
+
+watch -n 5 cargo run -- --config ./runtime/config.json --network RINKEBY
