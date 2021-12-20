@@ -9,8 +9,10 @@
   <component name="ChangeListManager">
     <list default="true" id="23c4b591-96b1-4813-8c0b-e49d834f1b20" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/crypto/envelope_cryptor.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/crypto/envelope_cryptor.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/crypto/local_cryptor.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/crypto/local_cryptor.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/mongo.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/mongo.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

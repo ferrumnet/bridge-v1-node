@@ -4,8 +4,6 @@ use aes_gcm::{Aes256Gcm, Key, Nonce}; // Or `Aes128Gcm`
 use aes_gcm::aead::{Aead, NewAead, Payload};
 use crate::crypto::crypto_utils::{b2h, h2b, keccak256_hash, rand_hex};
 
-
-
 pub struct LocalCryptor {
 }
 

@@ -14,7 +14,8 @@ use crate::validator::swap_processor::{Processor, SwapProcessor};
 use crate::validator::validator::{MultiSigValidator};
 use cli::cli::cli;
 use signer::service::SignerServiceImpl;
-use std::{fs, io};
+use std::{fs};
+use std::io::{self, Write};
 use crate::crypto::envelope_cryptor::EnvelopeCryptorImpl;
 use crate::crypto::local_cryptor::LocalCryptor;
 use crate::two_fa::two_fa_client::TwoFaClientImpl;
@@ -58,6 +59,7 @@ async fn setup(c: &AppConfig, live_config: LiveConfig, insecure: bool) -> BResul
 pub fn get_input(prompt: &str) -> String {
     println!();
     print!("{}",prompt);
+    io::stdout().flush().unwrap();
     let mut input = String::new();
     match io::stdin().read_line(&mut input) {
         Ok(_goes_into_input_above) => {},

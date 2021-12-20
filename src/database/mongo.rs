@@ -29,18 +29,14 @@ pub trait Database {
 }
 
 pub struct DatabaseClient {
-    withdraw_items: Box<Collection>,
-    validator_signatures: Box<Collection>,
+    withdraw_items: Box<Collection<Document>>,
+    validator_signatures: Box<Collection<Document>>,
 }
 
 impl DatabaseClient {
     pub async fn new(conf: &DbConfig) -> Result<Self> {
-        // let options =
-        //     ClientOptions::
-        // (&client_uri, ResolverConfig::())
-        //         .await?;
         let client = mongodb::Client::with_uri_str(&conf.connection_string).await?;
-        println!("Connected using {}", &conf.connection_string);
+        // println!("Connected using {}", &conf.connection_string);
 
         let withdraw_items = Box::new(
             client
