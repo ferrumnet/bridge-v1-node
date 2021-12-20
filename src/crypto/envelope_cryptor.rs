@@ -52,8 +52,11 @@ impl<KC: DirectCryptor, DC: DirectCryptor> EnvelopeCryptor for EnvelopeCryptorIm
     }
 }
 mod test {
+    #[allow(unused_imports)]
     use crate::crypto::crypto_utils::{b2h, h2b};
+    #[allow(unused_imports)]
     use crate::crypto::envelope_cryptor::{EnvelopeCryptor, EnvelopeCryptorImpl};
+    #[allow(unused_imports)]
     use crate::crypto::local_cryptor::LocalCryptor;
 
     # [test]

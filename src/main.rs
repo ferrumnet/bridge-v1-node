@@ -80,10 +80,17 @@ async fn main() {
             return;
         }
     };
-    let psr = setup(&confs, LiveConfig {
-        pw: get_input("Enter Key Password:"),
-        two_fa: get_input("Enter Google Authenticator Token:"),
-    }, opt.insecure).await;
+    let live_config = match opt.insecure {
+        true => LiveConfig {
+            two_fa: String::new(),
+            pw: String::new()
+        },
+        false => LiveConfig {
+            pw: get_input("Enter Key Password:"),
+            two_fa: get_input("Enter Google Authenticator Token:"),
+        }
+    };
+    let psr = setup(&confs, live_config, opt.insecure).await;
     let ps = match psr {
         Ok(p) => p,
         Err(e) => {

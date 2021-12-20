@@ -13,11 +13,13 @@ impl LocalCryptor {
     pub fn new() -> Self {
         LocalCryptor {}
     }
+    #[allow(dead_code)]
     pub fn key_from_pw(owned_pw: String) -> String {
         let pw = &owned_pw;
         assert!(pw.len() >= 20, "PW too short at least 20 characters");
         b2h(&keccak256_hash(&pw.as_bytes()))
     }
+    #[allow(dead_code)]
     pub fn raw_str_to_key(txt: &str) -> String {
         let b = format!("PW__{}__PW", txt);
         b2h(keccak256_hash(b.as_bytes()).as_slice())
@@ -64,8 +66,11 @@ impl DirectCryptor for LocalCryptor {
     }
 }
 mod test {
+    #[allow(unused_imports)]
     use crate::crypto::crypto_utils::{b2h, h2b};
+    #[allow(unused_imports)]
     use crate::crypto::cryptor::DirectCryptor;
+    #[allow(unused_imports)]
     use crate::crypto::local_cryptor::LocalCryptor;
 
     # [test]
