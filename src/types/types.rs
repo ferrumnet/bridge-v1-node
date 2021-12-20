@@ -77,9 +77,20 @@ pub struct DbConfig {
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "camelCase")]
+pub struct TwoFaConfig {
+    pub url: String,
+    pub two_fa_id: String,
+    pub hmac_public_key: String,
+    pub hmac_secret_key: String,
+}
+
+#[derive(Debug, Deserialize)]
+#[serde(rename_all = "camelCase")]
 pub struct AppConfig {
     pub signer: SignerConfig,
     pub db: DbConfig,
+    pub two_fa: TwoFaConfig,
+    pub enc_key: String,
 }
 
 impl AppConfig {

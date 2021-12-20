@@ -9,7 +9,15 @@
   <component name="ChangeListManager">
     <list default="true" id="23c4b591-96b1-4813-8c0b-e49d834f1b20" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cli/cli.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/cli.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/crypto/crypto_utils.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/crypto/crypto_utils.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/crypto/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/crypto/mod.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/signer/key_provider.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/signer/key_provider.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/types.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/types.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validator/validator.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/validator.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,15 +72,20 @@
     <property name="org.rust.disableDetachedFileInspectionC:/Users/naiem/nk/bridge-v1-node/src/ioc/container.rs" value="true" />
     <property name="org.rust.disableDetachedFileInspectionC:/Users/naiem/nk/bridge-v1-node/src/signer/key_provider.rs" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/crypto" />
+    </key>
+  </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="cargo build" />
       <command value="cargo update" />
     </option>
   </component>
-  <component name="RunManager" selected="Cargo.update">
-    <configuration name="Run bridge-v1-node" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="run --package bridge-v1-node --bin bridge-v1-node" />
+  <component name="RunManager" selected="Cargo.Test crypto::envelope_cryptor::test::test_enc_dec">
+    <configuration name="Test crypto::envelope_cryptor::test::test_enc_dec" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package bridge-v1-node --bin bridge-v1-node crypto::envelope_cryptor::test::test_enc_dec -- --exact" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <option name="channel" value="DEFAULT" />
       <option name="requiredFeatures" value="true" />
@@ -87,8 +100,24 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test test::test_sign_then_verify" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="test --package bridge-v1-node --bin bridge-v1-node test::test_sign_then_verify -- --exact" />
+    <configuration name="Test crypto::local_cryptor::test::test_enc_dec" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package bridge-v1-node --bin bridge-v1-node crypto::local_cryptor::test::test_enc_dec -- --exact" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <option name="channel" value="DEFAULT" />
+      <option name="requiredFeatures" value="true" />
+      <option name="allFeatures" value="false" />
+      <option name="emulateTerminal" value="false" />
+      <option name="withSudo" value="false" />
+      <option name="backtrace" value="SHORT" />
+      <envs />
+      <option name="isRedirectInput" value="false" />
+      <option name="redirectInputPath" value="" />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test local_cryptor" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package bridge-v1-node --bin bridge-v1-node crypto::local_cryptor" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <option name="channel" value="DEFAULT" />
       <option name="requiredFeatures" value="true" />
@@ -105,22 +134,6 @@
     </configuration>
     <configuration name="Test test::zero_x_works" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="command" value="test --package bridge-v1-node --bin bridge-v1-node test::zero_x_works -- --exact" />
-      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
-      <option name="channel" value="DEFAULT" />
-      <option name="requiredFeatures" value="true" />
-      <option name="allFeatures" value="false" />
-      <option name="emulateTerminal" value="false" />
-      <option name="withSudo" value="false" />
-      <option name="backtrace" value="SHORT" />
-      <envs />
-      <option name="isRedirectInput" value="false" />
-      <option name="redirectInputPath" value="" />
-      <method v="2">
-        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="build" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="build" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <option name="channel" value="DEFAULT" />
       <option name="requiredFeatures" value="true" />
@@ -153,9 +166,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Cargo.update" />
-        <item itemvalue="Cargo.Run bridge-v1-node" />
-        <item itemvalue="Cargo.update" />
+        <item itemvalue="Cargo.Test crypto::envelope_cryptor::test::test_enc_dec" />
+        <item itemvalue="Cargo.Test crypto::local_cryptor::test::test_enc_dec" />
+        <item itemvalue="Cargo.Test local_cryptor" />
         <item itemvalue="Cargo.update" />
         <item itemvalue="Cargo.update" />
       </list>

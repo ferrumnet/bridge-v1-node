@@ -18,7 +18,7 @@ pub struct ValidatorError {
     pub msg: String,
 }
 
-pub struct MultiSigValidator<KP: KeyProvider> {
+pub struct MultiSigValidator<KP: KeyProvider+Sized>  {
     config: SignerConfig,
     signing_svc: SignerServiceImpl,
     key_provider: Box<KP>,

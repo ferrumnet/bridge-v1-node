@@ -12,6 +12,9 @@ pub struct Opt {
 
     #[structopt(short, long)]
     pub transaction_id: Option<String>,
+
+    #[structopt(long)]
+    pub insecure: bool,
 }
 
 pub fn cli() -> Opt {

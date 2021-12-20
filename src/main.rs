@@ -4,31 +4,66 @@ mod database;
 mod signer;
 mod types;
 mod validator;
+mod two_fa;
 use crate::crypto::crypto_utils::CryptoUtils;
 use crate::database::mongo::DatabaseClient;
-use crate::signer::key_provider::EnvKeyProvider;
+use crate::signer::key_provider::{EnvKeyProvider, LiveConfig, SecureKeyProvider};
 use crate::types::errors::{BError, BResult};
 use crate::types::types::AppConfig;
 use crate::validator::swap_processor::{Processor, SwapProcessor};
-use crate::validator::validator::MultiSigValidator;
+use crate::validator::validator::{MultiSigValidator};
 use cli::cli::cli;
 use signer::service::SignerServiceImpl;
-use std::fs;
+use std::{fs, io};
+use crate::crypto::envelope_cryptor::EnvelopeCryptorImpl;
+use crate::crypto::local_cryptor::LocalCryptor;
+use crate::two_fa::two_fa_client::TwoFaClientImpl;
 
 // MultiSigSigner. This signer just aggregates signatures for a number of other
 // signers. Once enough signatures for a message is provided, we just sign it
 // without knowing what the msg represents at all.
 
-async fn setup(c: &AppConfig) -> BResult<Box<dyn Processor>> {
+async fn setup(c: &AppConfig, live_config: LiveConfig, insecure: bool) -> BResult<Box<dyn Processor>> {
     let cr_f = || CryptoUtils::new();
-    let signer: SignerServiceImpl = SignerServiceImpl::new(Box::new(cr_f()));
-    let kp = EnvKeyProvider::new();
-    let validator = MultiSigValidator::new(&c.signer, signer, kp);
+    let signer = || SignerServiceImpl::new(Box::new(cr_f()));
     let db = DatabaseClient::new(&c.db)
         .await
         .map_err(|_| BError::new("Error initializing db client"))?;
-    let processor = SwapProcessor::new(validator, db);
-    Ok(Box::new(processor))
+    match insecure {
+        true => {
+            let kp = EnvKeyProvider::new();
+            let v = MultiSigValidator::new(&c.signer, signer(), kp);
+            let p = SwapProcessor::new( v, db);
+            Ok(Box::new(p))
+        },
+        false => {
+            let double_cryptor = || EnvelopeCryptorImpl::new(
+                LocalCryptor::new(), LocalCryptor::new());
+            let two_fa_client = TwoFaClientImpl::new(
+                double_cryptor(),
+                &c.two_fa.url,
+                &c.two_fa.hmac_public_key,
+                &c.two_fa.hmac_secret_key,);
+            let mut skp = SecureKeyProvider::new(
+                two_fa_client,
+                double_cryptor(), );
+            skp.init(&c.enc_key, &c.two_fa.two_fa_id, live_config).await?;
+            let v = MultiSigValidator::new(&c.signer, signer(), skp);
+            let p = SwapProcessor::new(v, db);
+            Ok(Box::new(p))
+        },
+    }
+}
+
+pub fn get_input(prompt: &str) -> String {
+    println!();
+    print!("{}",prompt);
+    let mut input = String::new();
+    match io::stdin().read_line(&mut input) {
+        Ok(_goes_into_input_above) => {},
+        Err(_no_updates_is_fine) => {},
+    }
+    input.trim().to_string()
 }
 
 #[tokio::main]
@@ -45,7 +80,10 @@ async fn main() {
             return;
         }
     };
-    let psr = setup(&confs).await;
+    let psr = setup(&confs, LiveConfig {
+        pw: get_input("Enter Key Password:"),
+        two_fa: get_input("Enter Google Authenticator Token:"),
+    }, opt.insecure).await;
     let ps = match psr {
         Ok(p) => p,
         Err(e) => {

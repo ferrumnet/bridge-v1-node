@@ -2,6 +2,7 @@ use secp256k1::recovery::{RecoverableSignature, RecoveryId};
 use secp256k1::{key::SecretKey, Message, PublicKey, Secp256k1};
 use std::fmt;
 use tiny_keccak::{Hasher, Keccak};
+use rand::{RngCore, thread_rng};
 
 pub struct EcdsaSig {
     v: u64,
@@ -81,6 +82,25 @@ pub fn keccak256_hash(bytes: &[u8]) -> Vec<u8> {
 pub fn public_to_address(public: &[u8]) -> Vec<u8> {
     let hash = keccak256_hash(public);
     Vec::from(&hash[12..])
+}
+
+pub fn rand_hex(len: usize) -> String {
+    // get some random data:
+    let mut data: Vec<u8> = Vec::new();
+    data.resize(len, 0);
+    thread_rng().fill_bytes(&mut data);
+    let rv = b2h(&data);
+    assert_eq!(rv.len(), len * 2, "Unexpected random size");
+    rv
+}
+
+pub fn rand_hex32() -> String {
+    // get some random data:
+    let mut data = [0u8; 32];
+    thread_rng().fill_bytes(&mut data);
+    let rv = b2h(&data);
+    assert_eq!(rv.len(), 64, "Unexpected random size");
+    rv
 }
 
 #[allow(dead_code)]
